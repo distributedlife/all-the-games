@@ -1,4 +1,4 @@
-import { getGamesListUrl } from '../endpoints';
+import { getGamesListUrl } from './endpoints';
 import get from 'lodash/get';
 
 export const STORE_GAMES_DATA = 'SPIKEY/STORE_GAMES_DATA';

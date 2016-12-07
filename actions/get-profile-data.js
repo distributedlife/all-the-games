@@ -1,4 +1,4 @@
-import { getPlayerSummaryUrl } from '../endpoints';
+import { getPlayerSummaryUrl } from './endpoints';
 
 export const STORE_PROFILE_DATA = 'SPIKEY/STORE_PROFILE_DATA';
 

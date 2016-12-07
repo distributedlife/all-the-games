@@ -3,16 +3,16 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
-import configReducer from './reducers/config';
-import profileReducer from './reducers/profile';
-import friendsReducer from './reducers/friends';
-import gamesReducer from './reducers/games';
+import configReducer from '../reducers/config';
+import profileReducer from '../reducers/profile';
+import friendsReducer from '../reducers/friends';
+import gamesReducer from '../reducers/games';
 
-import { seedApp } from './actions/seed-app';
-import { getProfileData } from './actions/get-profile-data';
-import { getFriendsData } from './actions/get-friends-data';
-import { getGamesData } from './actions/get-games-data';
-import { getRecentGamesData } from './actions/get-recent-games-data';
+import { seedApp } from '../actions/seed-app';
+import { getProfileData } from '../actions/get-profile-data';
+import { getFriendsData } from '../actions/get-friends-data';
+import { getGamesData } from '../actions/get-games-data';
+import { getRecentGamesData } from '../actions/get-recent-games-data';
 
 import Navigation from './MainScreen';
 

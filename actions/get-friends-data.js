@@ -1,4 +1,4 @@
-import { getFriendsUrl } from '../endpoints';
+import { getFriendsUrl } from './endpoints';
 import get from 'lodash/get';
 
 export const STORE_FRIENDS_DATA = 'SPIKEY/STORE_FRIENDS_DATA';
