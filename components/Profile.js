@@ -50,13 +50,20 @@ const bioStyles = StyleSheet.create({
     fontStyle: 'italic',
     paddingTop: 4,
     color: '#999'
+  },
+  ingame: {
+    fontSize: 10,
+    fontStyle: 'italic',
+    paddingTop: 4,
+    color: '#8b3778'
   }
 })
 
-const BioItem = ({name, lastOnline}) => (
+const BioItem = ({name, lastOnline, inGame}) => (
   <View style={bioStyles.container}>
     <Text style={bioStyles.realname}>{name}</Text>
-    <Text style={bioStyles.id}>Online {lastOnline}</Text>
+    { !inGame && <Text style={bioStyles.id}>Online {lastOnline}</Text> }
+    { inGame && <Text style={bioStyles.ingame}>Playing {inGame}</Text> }
   </View>
 )
 
@@ -76,6 +83,24 @@ const profileStyles = StyleSheet.create({
   },
 });
 
+export const Friend = ({friend}) => {
+  const avatarSource = {
+    uri: friend.avatarmedium
+  }
+
+  const timeSince = moment(friend.lastlogoff, 'X').from(moment().utc())
+
+  return (
+    <View style={profileStyles.container}>
+      <Image source={avatarSource} style={profileStyles.avatar} resizeMode='contain'/>
+      <BioItem name={friend.displayName}
+               lastOnline={timeSince}
+               inGame={friend.gameextrainfo}
+      />
+    </View>
+  );
+}
+
 export const Profile = ({avatar, gamesCount, friendsCount}) => {
   const avatarSource = {
     uri: avatar.avatarmedium
@@ -86,7 +111,10 @@ export const Profile = ({avatar, gamesCount, friendsCount}) => {
   return (
     <View style={profileStyles.container}>
       <Image source={avatarSource} style={profileStyles.avatar} resizeMode='contain'/>
-      <BioItem name={avatar.realname || avatar.personaname} lastOnline={timeSince}/>
+      <BioItem name={avatar.displayName}
+               lastOnline={timeSince}
+               inGame={avatar.gameextrainfo}
+      />
       <SummaryItem name="Games" value={gamesCount} />
       <SummaryItem name="Friends" value={friendsCount} />
     </View>

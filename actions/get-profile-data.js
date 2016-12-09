@@ -7,7 +7,7 @@ export const storeProfileData = (profileData) => ({
   profileData
 })
 
-const fetchProfileData = (key, steamId) => {
+export const fetchProfileData = (key, steamId) => {
   return fetch(getPlayerSummaryUrl(key, steamId), { method: 'GET', json: true })
     .then((response) => response.json())
     .then((responseJson) => responseJson.response.players[0] || {})
